@@ -1,6 +1,7 @@
-package com.example.gottgried.musealllibs.models;
+package com.example.gottgried.musealllibs.pojo;
 
-import io.realm.RealmModel;
+import android.text.Editable;
+
 import io.realm.RealmObject;
 
 /**
@@ -13,6 +14,14 @@ public class Dog extends RealmObject {
     private String mark;
     private int age;
 
+    public Dog(String name, String mark, int age) {
+        this.name = name;
+        this.mark = mark;
+        this.age = age;
+    }
+
+    public Dog() {
+    }
 
     public String getName() {
         return name;

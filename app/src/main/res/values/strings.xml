@@ -2,4 +2,8 @@
     <string name="app_name">mUseAllLibs</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
+
+
+    <string name="msg_error_emty_fields">Error empty field</string>
+    <string name="msg_success">Success</string>
 </resources>
