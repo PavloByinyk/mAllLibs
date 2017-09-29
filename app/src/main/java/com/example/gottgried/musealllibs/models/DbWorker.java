@@ -7,6 +7,7 @@ import com.example.gottgried.musealllibs.mainActivity.MainActivityMVPContract;
 import com.example.gottgried.musealllibs.pojo.Dog;
 
 import io.realm.Realm;
+import io.realm.RealmResults;
 
 import static com.example.gottgried.musealllibs.mainActivity.MainActivity.LOG_TAG;
 
@@ -19,8 +20,8 @@ public class DbWorker implements MainActivityMVPContract.Model {
 
     private Realm realmDb;
 
-    public DbWorker(Realm realmDb) {
-        this.realmDb = realmDb;
+    public DbWorker() {
+        this.realmDb = Realm.getDefaultInstance();
     }
 
     @Override
@@ -36,8 +37,9 @@ public class DbWorker implements MainActivityMVPContract.Model {
     }
 
     @Override
-    public void getAllDogs() {
-
+    public RealmResults<Dog> getAllDogs() {
+        RealmResults<Dog> results = realmDb.where(Dog.class).findAll();
+        return results;
     }
 
     @Override

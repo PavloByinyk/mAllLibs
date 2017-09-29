@@ -8,7 +8,7 @@ import com.example.gottgried.musealllibs.models.DbWorker;
 import com.example.gottgried.musealllibs.pojo.Dog;
 import com.hannesdorfmann.mosby3.mvp.MvpBasePresenter;
 
-import io.realm.Realm;
+import io.realm.RealmResults;
 
 import static com.example.gottgried.musealllibs.mainActivity.MainActivityMVPContract.*;
 
@@ -21,7 +21,7 @@ public class MainPresenterImpl extends MvpBasePresenter<MainActivityMVPContract.
     private MainActivityMVPContract.Model model;
 
     public MainPresenterImpl() {
-        model = new DbWorker(Realm.getDefaultInstance());
+        model = new DbWorker();
     }
 
 
@@ -45,8 +45,15 @@ public class MainPresenterImpl extends MvpBasePresenter<MainActivityMVPContract.
 
     @Override
     public void getAllDogs() {
+
+        RealmResults<Dog> list = model.getAllDogs();
         if(isViewAttached()){
-            getView().onClickShowAllDogs();
+            if(list.isEmpty()){
+                    getView().showSnackBarMsg(R.string.msg_error_emty_fields);
+
+            }else {
+                getView().setListToAdapter(list);
+            }
         }
     }
 

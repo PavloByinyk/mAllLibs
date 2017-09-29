@@ -5,5 +5,6 @@
 
 
     <string name="msg_error_emty_fields">Error empty field</string>
+    <string name="msg_error_emty_list">Error empty list</string>
     <string name="msg_success">Success</string>
 </resources>

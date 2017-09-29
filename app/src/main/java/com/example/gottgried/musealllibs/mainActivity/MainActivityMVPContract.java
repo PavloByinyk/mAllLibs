@@ -6,6 +6,8 @@ import com.example.gottgried.musealllibs.pojo.Dog;
 import com.hannesdorfmann.mosby3.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby3.mvp.MvpView;
 
+import io.realm.RealmResults;
+
 /**
  * Created by Gottgried on 28.09.2017.
  */
@@ -16,6 +18,8 @@ public interface MainActivityMVPContract {
         void onClickAddDog();
         void onClickDeleteDog();
         void onClickShowAllDogs();
+        void onClickClearList();
+        void setListToAdapter(RealmResults<Dog> listDogs);
         void showSnackBarMsg(int masg);
     }
 
@@ -28,7 +32,7 @@ public interface MainActivityMVPContract {
     interface Model{
         void saveDog(Dog dog);
         void deleteDog();
-        void getAllDogs();
+        RealmResults<Dog> getAllDogs();
 
         void closeModel();
     }
